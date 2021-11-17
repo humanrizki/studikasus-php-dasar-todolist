@@ -9,12 +9,13 @@
         }
     ],
     "require": {
-        "php":">=7.4||^8.0"
+        "php":">=7.4||^8.0",
+        "humanrizki/studikasus-php-dasar-todolist":"1.0.1"
     },
     "repositories": [
         {
             "type":"vcs",
-            "url":""
+            "url":"https://github.com/humanrizki/studikasus-php-dasar-todolist.git"
         }
     ],
     "autoload": {

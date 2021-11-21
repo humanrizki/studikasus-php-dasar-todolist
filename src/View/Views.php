@@ -3,19 +3,22 @@ namespace Humanrizki\View;
 
 use Humanrizki\Helper\Input;
 use Humanrizki\Model\Todolist;
-use ReflectionMethod;
 
 class Views{
-    public $todolist;
-    public function __construct(private string $info = "")
+    private $todolist;
+    private $info;
+    private $viewM = [
+        1=>"Tambah Todo",
+        2=>"Hapus Todo",
+    ];
+    public function __construct()
     {
         $this->todolist = new Todolist();
     }
 
     public function viewAdd(){
-        echo "$this->info".PHP_EOL;
-        $input = new Input("Masukkan string todo (x = batal): ");
-        $todo = $input->put();
+        echo $this->getInfo().PHP_EOL;
+        $todo = (new Input("Masukkan string todo (x = batal): "))->put();
         if(strtolower($todo) == "x"){
             echo "Batal menambahkan todolist!".PHP_EOL;
         }else{
@@ -23,9 +26,8 @@ class Views{
         }
     }
     public function viewDel(){
-        echo "$this->info".PHP_EOL;
-        $input = new Input("Masukkan id/index todo (x = batal): ");
-        $todo = $input->put();
+        echo $this->getInfo().PHP_EOL;
+        $todo = (new Input("Masukkan id/index todo (x = batal): "))->put();
         if(strtolower($todo) == "x"){
             echo "Batal menghapus todolist!";
         }else{
@@ -38,19 +40,16 @@ class Views{
             $this->todolist->showTodo();
     
             echo "============ MENU ============" . PHP_EOL;
-            echo "1. Tambah Todo" . PHP_EOL;
-            echo "2. Hapus Todo" . PHP_EOL;
+            foreach($this->viewM as $number => $item){
+                echo "$number. $item".PHP_EOL;
+            }
             echo "x. Keluar" . PHP_EOL;
             
-            $input = new Input("Masukkan pilihan aksi! (x = batal) : ");
-            $pilihan = $input->put();
-    
+            $pilihan = strtolower((new Input("Masukkan pilihan aksi! (x = batal) : "))->put());
             if ($pilihan == "1") {
-                $this->info = "Menambah todo!";
-                $this->viewAdd();
+                $this->setInfo("Menambah Todo!")->viewAdd();
             } else if ($pilihan == "2") {
-                $this->info = "Menghapus todo!";
-                $this->viewDel();
+                $this->setInfo("Menghapus Todo!")->viewDel();
             } else if ($pilihan == "x") {
                 break;
             } else {
@@ -58,5 +57,17 @@ class Views{
             }
         }
         echo "Sampai Jumpa Lagi" . PHP_EOL;
+    }
+
+    
+    public function setInfo($info)
+    {
+        $this->info = $info;
+        return $this;
+    }
+
+    public function getInfo()
+    {
+        return $this->info;
     }
 }

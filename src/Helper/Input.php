@@ -2,9 +2,10 @@
 namespace Humanrizki\Helper;
 class Input{
     public function __construct(private string $placeholder)
-    {}
-    public function put(){
+    {
         echo $this->placeholder.PHP_EOL;
+    }
+    public function put(){
         return trim(fgets(STDIN));
     }
 }

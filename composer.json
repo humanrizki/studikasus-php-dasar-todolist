@@ -1,7 +1,7 @@
 {
     "name": "humanrizki/todolist-php",
     "description": "Belajar membuat aplikasi todolist dengan php native",
-    "type": "project",
+    "type": "library",
     "authors": [
         {
             "name": "humanrizki",

@@ -11,12 +11,6 @@
     "require": {
         "php":">=7.4||^8.0"
     },
-    "repositories": [
-        {
-            "type":"vcs",
-            "url":"https://github.com/humanrizki/studikasus-php-dasar-todolist.git"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "Humanrizki\\":"src/"

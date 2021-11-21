@@ -10,7 +10,7 @@
     ],
     "require": {
         "php":">=7.4||^8.0",
-        "humanrizki/todolist-php":"1.0.0"
+        "humanrizki/studikasus-php-dasar-todolist":"1.1.0"
     },
     "repositories": [
         {
@@ -22,5 +22,6 @@
         "psr-4": {
             "Humanrizki\\":"src/"
         }
-    }
+    },
+    "minimum-stability": "stable"
 }
